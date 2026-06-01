@@ -42,11 +42,14 @@ const emit = defineEmits(['send', 'stop'])
 
 const inputText = ref('')
 const inputTextarea = ref(null)
+const isSendingLocal = ref(false)
 
 // 发送消息
 function sendMessage() {
   const text = inputText.value.trim()
-  if (!text || props.isGenerating || props.isSending) return
+  if (!text || props.isGenerating || props.isSending || isSendingLocal.value) return
+  
+  isSendingLocal.value = true
 
   emit('send', text)
   inputText.value = ''
@@ -55,6 +58,10 @@ function sendMessage() {
   if (inputTextarea.value) {
     inputTextarea.value.style.height = 'auto'
   }
+  
+  setTimeout(() => {
+    isSendingLocal.value = false
+  }, 500)
 }
 
 // 停止生成
