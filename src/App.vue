@@ -94,8 +94,8 @@ import ClearChatModal from "./components/modals/ClearChatModal.vue";
 const HARDCODED_API_KEY = import.meta.env.VITE_API_KEY;
 
 // 状态
-const currentModel = ref("v4");
-const sidebarExpanded = ref(true);
+const currentModel = ref("flash");
+const sidebarExpanded = ref(window.innerWidth >= 768);
 const isGenerating = ref(false);
 const isSending = ref(false);
 const accumulatedContent = ref("");
