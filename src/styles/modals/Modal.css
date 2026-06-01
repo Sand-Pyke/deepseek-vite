@@ -1,0 +1,164 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-20px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.show .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 16px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.modal-input:focus {
+  border-color: #3b82f6;
+}
+
+.modal-input[type="text"] {
+  box-sizing: border-box;
+}
+
+textarea.modal-input {
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  min-height: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.modal-btn-cancel {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.modal-btn-cancel:hover {
+  background: #e2e8f0;
+}
+
+.modal-btn-confirm {
+  background: #3b82f6;
+  color: white;
+}
+
+.modal-btn-confirm:hover {
+  background: #2563eb;
+}
+
+.modal-btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.modal-btn-danger:hover {
+  background: #dc2626;
+}
+
+.delete-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #dc2626;
+}
+
+.delete-title svg {
+  color: #dc2626;
+}
+
+.modal-content {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.scene-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.scene-tag {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scene-tag:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.scene-tag.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.scene-tag.active:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}

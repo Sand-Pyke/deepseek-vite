@@ -1,0 +1,96 @@
+.input-area {
+  margin: 0 24px 16px 24px;
+  backdrop-filter: blur(12px);
+  position: sticky;
+  flex-shrink: 0;
+  margin-left: 5%;
+}
+
+.input-container {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  position: relative;
+}
+
+.input-textarea {
+  flex: 1;
+  padding: 14px 50px 14px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  color: #1e293b;
+  font-size: 16px;
+  line-height: 24px;
+  resize: none;
+  outline: none;
+  min-height: 100px;
+  max-height: 300px;
+  transition: border-color 0.2s;
+  font-family:
+    "Cascadia Mono", "Ubuntu Mono", "DejaVu Sans Mono", "Liberation Mono",
+    "JetBrains Mono", "Fira Code", Cousine, "Roboto Mono", "Courier New",
+    Courier, sans-serif, system-ui;
+  overflow-y: auto;
+}
+
+.input-textarea:focus {
+  border-color: #3b82f6;
+}
+
+.input-textarea::placeholder {
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.send-btn {
+  position: absolute;
+  background: #3b82f6;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover {
+  background: #2563eb;
+}
+
+.send-btn:disabled {
+  background: #64748b;
+  cursor: not-allowed;
+}
+
+.stop-btn {
+  position: absolute;
+  background: #ef4444;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  right: 60px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stop-btn:hover {
+  background: #dc2626;
+}
