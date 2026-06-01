@@ -98,7 +98,6 @@
   color: #1e293b;
   border-top-left-radius: 4px;
   border: 1px solid #e5e5e5;
-  padding-bottom: 42px;
 }
 
 .assistant-message .message-bubble::after {
@@ -355,36 +354,41 @@ tr:nth-child(even):hover td {
   margin: 0 auto;
 }
 
-.copy-message-btn {
+.message-copy-btn {
   position: absolute;
-  bottom: 8px;
+  top: 8px;
   right: 8px;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   padding: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(241, 245, 249, 0.8);
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  color: #64748b;
+  border-radius: 8px;
+  color: #94a3b8;
   cursor: pointer;
-  opacity: 0;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
 }
 
-.assistant-message .message-bubble:hover .copy-message-btn {
+.assistant-message .message-bubble:hover .message-copy-btn {
   opacity: 1;
 }
 
-.copy-message-btn:hover {
+.message-copy-btn:hover {
   background: #3b82f6;
   border-color: #3b82f6;
   color: #ffffff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-.copy-message-btn.copied {
+.message-copy-btn:active {
+  transform: scale(0.95);
+}
+
+.message-copy-btn.copied {
   background: #10b981;
   border-color: #10b981;
   color: #ffffff;

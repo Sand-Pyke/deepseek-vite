@@ -13,9 +13,9 @@
     >
       <div class="avatar" :class="msg.role === 'user' ? 'user-avatar' : 'assistant-avatar'"></div>
       <div class="message-content">
-        <div class="message-bubble">
+        <div class="message-bubble" style="position: relative;">
           <div class="reply-content" v-html="msg.role === 'user' ? escapeHtml(msg.content) : renderMarkdown(msg.content)"></div>
-          <button v-if="msg.role === 'assistant'" class="copy-message-btn" @click="copyMessage(msg.content, $event)">
+          <button v-if="msg.role === 'assistant'" class="message-copy-btn" @click="copyMessage(msg.content, $event)" title="复制全文">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
               <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v1"></path>
@@ -74,7 +74,11 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['scroll-change'])
+const emit = defineEmits(['scroll-change', 'regenerate'])
+
+function regenerateMessage(index) {
+  emit('regenerate', index)
+}
 
 const chatMessagesDiv = ref(null)
 const isUserScrolledUp = ref(false)

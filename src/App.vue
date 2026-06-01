@@ -40,7 +40,7 @@
         :is-generating="isGenerating"
         :accumulated-content="accumulatedContent"
         @scroll-change="handleScrollChange"
-      />
+        />
 
       <ChatInput
         ref="chatInputRef"
@@ -108,7 +108,6 @@ const scenes = ref([
     id: "default",
     name: "默认场景",
     systemPrompt: "",
-    enableRAG: false,
     knowledgeBaseId: "",
     ragTopK: 3,
   },
@@ -248,7 +247,6 @@ function closeEditSceneModal() {
 function handleEditScene({
   name,
   systemPrompt,
-  enableRAG,
   knowledgeBaseId,
   ragTopK,
 }) {
@@ -257,7 +255,6 @@ function handleEditScene({
   if (scene) {
     scene.name = name || scene.name;
     scene.systemPrompt = systemPrompt;
-    scene.enableRAG = enableRAG || false;
     scene.knowledgeBaseId = knowledgeBaseId || "";
     scene.ragTopK = ragTopK || 3;
     saveScenes();
@@ -458,7 +455,6 @@ const editingScene = computed(() => {
     return {
       name: "",
       systemPrompt: "",
-      enableRAG: false,
       knowledgeBaseId: "",
       ragTopK: 3,
     };
@@ -466,7 +462,6 @@ const editingScene = computed(() => {
     scenes.value.find((s) => s.id === editingSceneId.value) || {
       name: "",
       systemPrompt: "",
-      enableRAG: false,
       knowledgeBaseId: "",
       ragTopK: 3,
     }
