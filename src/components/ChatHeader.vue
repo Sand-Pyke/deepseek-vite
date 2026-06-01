@@ -24,6 +24,6 @@ const sceneName = computed(() => {
 })
 
 const modelName = computed(() => {
-  return props.currentModel === 'flash' ? 'DeepSeek V4 Flash' : 'DeepSeek V4 Pro'
+  return props.currentModel === 'flash' ? '随便聊聊' : '深入思考'
 })
 </script>

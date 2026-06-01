@@ -9,16 +9,16 @@
           <path d="M26 15C26 15 27.5 14.75 28.25 15.5C29 16.25 28.75 17.5 28.75 17.5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           <path d="M10 14C10 14 9 15 8.5 16.5C8 18 8.75 19.25 10 19.25" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
-        <span>deepseek</span>
+        <span>孝虎AI</span>
       </div>
       <div class="model-option" :class="{ active: currentModel === 'flash' }" data-model="flash" @click="$emit('set-model', 'flash')">
-        <span>DeepSeek V4 Flash</span>
+        <span>随便聊聊</span>
         <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
       <div class="model-option" :class="{ active: currentModel === 'v4' }" data-model="v4" @click="$emit('set-model', 'v4')">
-        <span>DeepSeek V4 Pro</span>
+        <span>深入思考</span>
         <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
