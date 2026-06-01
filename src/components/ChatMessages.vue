@@ -15,6 +15,12 @@
       <div class="message-content">
         <div class="message-bubble">
           <div class="reply-content" v-html="msg.role === 'user' ? escapeHtml(msg.content) : renderMarkdown(msg.content)"></div>
+          <button v-if="msg.role === 'assistant'" class="copy-message-btn" @click="copyMessage(msg.content, $event)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v1"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -105,6 +111,30 @@ function copyCode(btn) {
       console.error('复制失败:', err)
     })
   }
+}
+
+// 复制整条消息
+function copyMessage(content, event) {
+  navigator.clipboard.writeText(content).then(() => {
+    const btn = event.currentTarget
+    btn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `
+    btn.classList.add('copied')
+    setTimeout(() => {
+      btn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v1"></path>
+        </svg>
+      `
+      btn.classList.remove('copied')
+    }, 2000)
+  }).catch(err => {
+    console.error('复制失败:', err)
+  })
 }
 
 // 将复制函数挂载到全局
