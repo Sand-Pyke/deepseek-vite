@@ -329,7 +329,8 @@ async function handleSendMessage(text) {
   }
   const currentHistory = conversationHistory.value[currentSceneId.value];
   currentHistory.push({ role: "user", content: text });
-  // messages 指向同一数组，自动更新，无需再次 push
+  // 同步更新 messages，确保 UI 正确渲染
+  messages.value = currentHistory;
   saveConversations();
 
   isGenerating.value = true;
@@ -342,7 +343,21 @@ async function handleSendMessage(text) {
   try {
     await callChatAPI(currentScene);
   } catch (error) {
-    // 错误处理保持不变
+    if (error.name === "AbortError") {
+      // 中止时保留已生成的内容
+      if (accumulatedContent.value.trim()) {
+        const currentHistory = conversationHistory.value[currentSceneId.value];
+        currentHistory.push({
+          role: "assistant",
+          content: accumulatedContent.value + "\n\n*[已中断]*",
+        });
+        saveConversations();
+        messages.value = currentHistory;
+        accumulatedContent.value = "";
+      }
+    } else {
+      statusMessage.value = `错误：${error.message}`;
+    }
   } finally {
     isGenerating.value = false;
     isSending.value = false;
@@ -423,15 +438,14 @@ async function callChatAPI(currentScene) {
   }
 
   if (accumulatedContent.value.trim()) {
-    conversationHistory.value[currentSceneId.value].push({
+    const currentHistory = conversationHistory.value[currentSceneId.value];
+    currentHistory.push({
       role: "assistant",
       content: accumulatedContent.value,
     });
     saveConversations();
-    messages.value.push({
-      role: "assistant",
-      content: accumulatedContent.value,
-    });
+    // 同步更新 messages，确保引用一致
+    messages.value = currentHistory;
     accumulatedContent.value = "";
   } else {
     statusMessage.value = "模型返回空内容";
