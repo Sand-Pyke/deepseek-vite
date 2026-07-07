@@ -1,7 +1,7 @@
 <template>
   <div class="chat-messages" ref="chatMessagesDiv" @scroll="handleScroll">
     <div v-if="messages.length === 0" class="welcome-message">
-      <h2>欢迎使用 DeepSeek</h2>
+      <h2>欢迎使用孝虎AI</h2>
       <p>有什么我可以帮助你的吗？选择左侧的模型开始对话。</p>
     </div>
 
